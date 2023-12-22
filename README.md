@@ -1,6 +1,6 @@
 # IGLESIA FILIPINA INDEPENDIENTE - Mobile Application
 
-This simple mobile app is used to list the church songs at ease with predefined titles/ labels.
+A simple mobile app used to list the church songs at ease with predefined titles/ labels.
 
 #### [Click here](https://drive.google.com/drive/folders/1PvGAufWblGgtIkmaXLZKiuoJEmElpMEs?usp=sharing) to download the app.
 
