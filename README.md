@@ -1,6 +1,6 @@
 # IGLESIA FILIPINA INDEPENDIENTE - Mobile Application
 
-#### You can download the app [here] (https://drive.google.com/drive/folders/1PvGAufWblGgtIkmaXLZKiuoJEmElpMEs?usp=sharing)
+#### [Click here](https://drive.google.com/drive/folders/1PvGAufWblGgtIkmaXLZKiuoJEmElpMEs?usp=sharing) to download the app.
 
 This simple mobile app is use to list the church songs at ease with predefined titles/ labels.
 
