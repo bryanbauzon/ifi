@@ -1,17 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:ifi_app/common/app_common.dart';
+import 'package:intl/intl.dart';
 
 class CustomWidgets {
+  static String getCurrDate() {
+    DateTime now = DateTime.now();
+    // return DateTime(now.year, now.month, now.day);
+    return DateFormat.yMMMMd('en_US').format(now);
+  }
+
   static Widget appBar(BuildContext context) => SafeArea(
           child: Container(
         decoration: const BoxDecoration(color: Colors.red),
-        height: 70,
+        height: 90,
         width: MediaQuery.of(context).size.width,
-        child: const Center(
-            child: Text(
-          AppCommons.appName,
-          style: TextStyle(
-              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+        child: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              AppCommons.appName,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold),
+            ),
+            Text(
+              getCurrDate(),
+              style: const TextStyle(color: Colors.white),
+            )
+          ],
         )),
       ));
 

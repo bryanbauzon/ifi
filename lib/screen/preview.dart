@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ifi_app/common/app_common.dart';
+import 'package:intl/intl.dart';
 
 class Preview extends StatefulWidget {
   const Preview({
@@ -31,12 +32,12 @@ class _PreviewState extends State<Preview> {
             ? Row(
                 children: [
                   Text(
-                    '$label: ',
+                    formatValue('$label: ', false),
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 15),
                   ),
                   Text(
-                    value,
+                    formatValue(value, false),
                     style: const TextStyle(fontSize: 15),
                   )
                 ],
@@ -48,19 +49,37 @@ class _PreviewState extends State<Preview> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        '$label: ',
+                        formatValue('$label: ', false),
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                     ),
                     Text(
-                      value,
+                      formatValue(value, true),
                       style: const TextStyle(fontSize: 15),
                     )
                   ],
                 ),
               ),
       );
+
+  String formatValue(String value, bool showBullet) {
+    String val = value;
+    if (val.contains(',')) {
+      val = value.replaceAll(',', '\n•');
+    }
+    if (showBullet) {
+      val = '• $val';
+    }
+    return val.toUpperCase();
+  }
+
+  String getCurrDate() {
+    DateTime now = DateTime.now();
+    // return DateTime(now.year, now.month, now.day);
+    return DateFormat.yMMMMd('en_US').format(now);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,15 +89,26 @@ class _PreviewState extends State<Preview> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Text(
-                  widget.title,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+                  padding:
+                      const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                  child: Column(
+                    children: [
+                      Text(
+                        formatValue(widget.title, false),
+                        style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blueAccent),
+                      ),
+                      //
+                      Text(
+                        getCurrDate(),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w200,
+                            color: Colors.redAccent),
+                      )
+                    ],
+                  )),
               labelValue(AppCommons.fields[1], widget.entrance),
               labelValue(AppCommons.fields[2], widget.fReading),
               labelValue(AppCommons.fields[3], widget.sReading),
@@ -93,9 +123,9 @@ class _PreviewState extends State<Preview> {
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),
-          child: const Text(
-            'Back',
-            style: TextStyle(color: Colors.white),
+          child: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
           ),
           onPressed: () {
             Navigator.pop(context);
